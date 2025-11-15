@@ -93,7 +93,7 @@ def transcribe_with_timestamps():
         model = request.form.get('model', 'whisper-large-v3')
 
         # ✅ Use Client instead of Groq here too
-        client = Client(api_key=GROQ_API_KEY)
+        client = Groq(api_key=GROQ_API_KEY)
 
         transcription = client.audio.transcriptions.create(
             file=(audio_file.filename, audio_file.read()),
@@ -131,4 +131,5 @@ if __name__ == '__main__':
     print("\n🌐 Server: http://127.0.0.1:5001")
     print("="*60 + "\n")
     app.run(debug=True, port=5001, host='0.0.0.0')
+
 
