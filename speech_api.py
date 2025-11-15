@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, render_template
-from groq import Client  # ✅ only this import
+from groq import Groq  # ✅ only this import
 import os
 
 
@@ -45,7 +45,7 @@ def transcribe_audio():
         print(f"{'='*50}\n")
 
         # ✅ Correct Client initialization
-        client = Client(api_key=GROQ_API_KEY)
+        client = Groq(api_key=GROQ_API_KEY)
 
         # Transcribe
         transcription = client.audio.transcriptions.create(
@@ -131,3 +131,4 @@ if __name__ == '__main__':
     print("\n🌐 Server: http://127.0.0.1:5001")
     print("="*60 + "\n")
     app.run(debug=True, port=5001, host='0.0.0.0')
+
